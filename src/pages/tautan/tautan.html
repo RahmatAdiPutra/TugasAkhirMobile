@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>TAUTAN</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card *ngFor="let item of items">
+
+  <ion-card-content>
+    <ion-card-title>
+      {{ item.nama }}
+    </ion-card-title>
+    <p>
+      <a href="{{ item.link }}" target="blank">{{ item.nama }}</a>
+    </p>
+  </ion-card-content>
+
+  <ion-row>
+    <ion-col>
+      <button ion-button icon-left clear small (click)="editTautan({ record: item })">
+        <ion-icon name="create"></ion-icon>
+        <div>Edit</div>
+      </button>
+    </ion-col>
+    <ion-col>
+      <button ion-button icon-left clear small (click)="hapusTautan({ hapus: item })">
+        <ion-icon name="trash"></ion-icon>
+        <div>Hapus</div>
+      </button>
+    </ion-col>
+  </ion-row>
+
+  </ion-card>
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="tambahTautan()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

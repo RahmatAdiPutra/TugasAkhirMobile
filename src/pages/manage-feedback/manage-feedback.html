@@ -1,0 +1,83 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{ pageTitle }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<div>
+      <div *ngIf="hapus">
+         <div class="center">
+         Anda yakin ingin menghapus data ini ?
+         <button
+            ion-button
+            color="primary"
+            text-center
+            (click)="deleteEntry()">Ya</button>
+         <button
+            ion-button
+            color="primary"
+            text-center
+            (click)="batal()">Tidak</button>
+
+         </div>
+      </div>
+
+      <div *ngIf="hideForm && !hapus">
+         <h2>Berhasil!!!</h2>
+      </div>
+
+      <div *ngIf="!hideForm">
+         <form [formGroup]="form" (ngSubmit)="saveEntry()">
+
+            <ion-datetime 
+                  displayFormat="DDDD, DD-MM-YYYY"
+                  formControlName="tanggal"
+                  hidden
+                  [(ngModel)]="feedbackTanggal"></ion-datetime>
+
+            <ion-list>
+               <ion-item-group>
+                  <ion-item-divider color="primary">Nama *</ion-item-divider>
+                  <ion-item>
+                     <ion-input
+                        type="text"
+                        placeholder="Nama ..."
+                        formControlName="nama"
+                        [(ngModel)]="feedbackNama"></ion-input>
+                  </ion-item>
+               </ion-item-group>
+
+
+               <ion-item-group>
+                  <ion-item-divider color="primary">Komentar *</ion-item-divider>
+                  <ion-item>
+                     <ion-textarea
+                        placeholder="Komentar ..."
+                        formControlName="komentar"
+                        rows="6"
+                        [(ngModel)]="feedbackKomentar"></ion-textarea>
+                  </ion-item>
+               </ion-item-group>
+
+
+               <ion-item>
+                  <button
+                     ion-button
+                     color="primary"
+                     text-center
+                     block
+                     [disabled]="!form.valid">Simpan</button>
+               </ion-item>
+
+            </ion-list>
+
+         </form>
+      </div>
+   </div>
+
+</ion-content>

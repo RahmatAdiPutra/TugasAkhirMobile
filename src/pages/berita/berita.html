@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>BERITA KAMPUS</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card *ngFor="let item of items">
+
+  <ion-card-content>
+    <ion-card-title>
+      {{ item.judul }}
+    </ion-card-title>
+    <p>
+      {{ item.tanggal }}
+    </p>
+    <p>
+      <img src="{{ item.foto }}">
+    </p>
+    <p>
+      {{ item.penjelasan }}
+    </p>
+  </ion-card-content>
+
+  <ion-row>
+    <ion-col>
+      <button ion-button icon-left clear small (click)="editBerita({ record: item })">
+        <ion-icon name="create"></ion-icon>
+        <div>Edit</div>
+      </button>
+    </ion-col>
+    <ion-col>
+      <button ion-button icon-left clear small (click)="hapusBerita({ hapus: item })">
+        <ion-icon name="trash"></ion-icon>
+        <div>Hapus</div>
+      </button>
+    </ion-col>
+  </ion-row>
+
+  </ion-card>
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="tambahBerita()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

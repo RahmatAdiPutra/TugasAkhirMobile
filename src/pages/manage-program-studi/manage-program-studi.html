@@ -1,0 +1,88 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{ pageTitle }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<div>
+      <div *ngIf="hapus">
+         <div class="center">
+         Anda yakin ingin menghapus data ini ?
+         <button
+            ion-button
+            color="primary"
+            text-center
+            (click)="deleteEntry()">Ya</button>
+         <button
+            ion-button
+            color="primary"
+            text-center
+            (click)="batal()">Tidak</button>
+
+         </div>
+      </div>
+
+      <div *ngIf="hideForm && !hapus">
+         <h2>Berhasil!!!</h2>
+      </div>
+
+      <div *ngIf="!hideForm">
+         <form [formGroup]="form" (ngSubmit)="saveEntry()">
+
+            <ion-list>
+               <ion-item-group>
+                  <ion-item-divider color="primary">Jurusan *</ion-item-divider>
+                  <ion-item>
+                     <ion-input
+                        type="text"
+                        placeholder="Jurusan ..."
+                        formControlName="jurusan"
+                        [(ngModel)]="programStudiJurusan"></ion-input>
+                  </ion-item>
+               </ion-item-group>
+
+
+               <ion-item-group>
+                  <ion-item-divider color="primary">Deskripsi *</ion-item-divider>
+                  <ion-item>
+                     <ion-textarea
+                        placeholder="Deskripsi ..."
+                        formControlName="penjelasan"
+                        rows="6"
+                        [(ngModel)]="programStudiPenjelasan"></ion-textarea>
+                  </ion-item>
+               </ion-item-group>
+
+               <ion-item-group>
+                  <ion-item-divider color="primary">URL Foto *</ion-item-divider>
+                  <ion-item>
+                     <ion-input
+                        type="text"
+                        placeholder="Foto ..."
+                        formControlName="foto"
+                        [(ngModel)]="programStudiFoto"></ion-input>
+                  </ion-item>
+               </ion-item-group>
+
+
+               <ion-item>
+                  <button
+                     ion-button
+                     color="primary"
+                     text-center
+                     block
+                     [disabled]="!form.valid">Simpan</button>
+               </ion-item>
+
+            </ion-list>
+
+         </form>
+      </div>
+   </div>
+
+</ion-content>
